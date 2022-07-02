@@ -51,20 +51,6 @@ class CustomTaskSet(TaskSet):
     config.read('config.ini')
     conn_string = config['DEFAULT']['conn_string']
 
-   @task(1)
-    def long_query_5(self):
-        self.client.execute_query(self.conn_string,
-                                  '''
-                                    SELECT DISTINCT ON (cadastral_num)
-                                        cadastral_num,
-                                        realty_type_bkh,
-                                        region_code,
-                                        now()::date AS create_dt
-                                    FROM
-                                        dl_egrn_rosreestr.realty_actual;
-                                    '''
-                                  )
-
 '''
     @task(1)
     def friquent_query_1(self):
@@ -735,7 +721,21 @@ FROM ( SELECT DISTINCT ON (deal_num)
 
                                   '''
                                   )
-
+'''
+    @task(9)
+    def long_query_5(self):
+        self.client.execute_query(self.conn_string,
+                                  '''
+                                    SELECT DISTINCT ON (cadastral_num)
+                                        cadastral_num,
+                                        realty_type_bkh,
+                                        region_code,
+                                        now()::date AS create_dt
+                                    FROM
+                                        dl_egrn_rosreestr.realty_actual;
+                                    '''
+                                  )
+'''
     @task(10)
     def long_query_6(self):
         self.client.execute_query(self.conn_string,
@@ -1485,9 +1485,8 @@ FROM
     --WHERE aa.src_cian_id = 266465072  --246598838 --236625768;
 
                                     '''
-                                 )
-                                 '''
-
+                                  )
+'''
 class ADBUser(User):
     min_wait = 0
     max_wait = 0
