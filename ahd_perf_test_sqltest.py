@@ -52,7 +52,7 @@ class CustomTaskSet(TaskSet):
 
 
     @task(1)
-    def long_query_5(self):
+    def test_query(self):
         self.client.execute_query(self.conn_string,
                                   '''
                                     SELECT 1
