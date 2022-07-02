@@ -51,7 +51,7 @@ class CustomTaskSet(TaskSet):
     config.read('config.ini')
     conn_string = config['DEFAULT']['conn_string']
 
-'''
+
     @task(1)
     def friquent_query_1(self):
         self.client.execute_query(self.conn_string,
@@ -721,7 +721,7 @@ FROM ( SELECT DISTINCT ON (deal_num)
 
                                   '''
                                   )
-'''
+
     @task(9)
     def long_query_5(self):
         self.client.execute_query(self.conn_string,
@@ -735,7 +735,7 @@ FROM ( SELECT DISTINCT ON (deal_num)
                                         dl_egrn_rosreestr.realty_actual;
                                     '''
                                   )
-'''
+
     @task(10)
     def long_query_6(self):
         self.client.execute_query(self.conn_string,
@@ -1486,7 +1486,7 @@ FROM
 
                                     '''
                                   )
-'''
+
 class ADBUser(User):
     min_wait = 0
     max_wait = 0
