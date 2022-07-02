@@ -55,13 +55,7 @@ class CustomTaskSet(TaskSet):
     def long_query_5(self):
         self.client.execute_query(self.conn_string,
                                   '''
-                                    SELECT DISTINCT ON (cadastral_num)
-                                        cadastral_num,
-                                        realty_type_bkh,
-                                        region_code,
-                                        now()::date AS create_dt
-                                    FROM
-                                        dl_egrn_rosreestr.realty_actual;
+                                    SELECT 1
                                     '''
                                   )
 
