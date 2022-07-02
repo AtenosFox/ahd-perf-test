@@ -55,7 +55,8 @@ class CustomTaskSet(TaskSet):
     def friquent_query_3(self):
         self.client.execute_query(self.conn_string,
                                   '''
-                                     SELECT  
+                                    SELECT count(*) FROM
+                                     (SELECT  
                                             list_name, 
                                             is_negative, 
                                             status_name, 
@@ -63,7 +64,7 @@ class CustomTaskSet(TaskSet):
                                             inn, 
                                             ogrn, 
                                             kpp 
-                                        FROM dl_spark.get_spark_include_list ('3904085758', '', '');
+                                        FROM dl_spark.get_spark_include_list ('3904085758', '', '')) a;
                                     '''
                                   )
 
